@@ -28,6 +28,7 @@ from bpy_extras.image_utils import load_image
 
 from . import shared as shared
 from .PyCoD import xmodel as XModel
+from . import cycles_materials
 
 
 def get_armature_for_object(ob):
@@ -183,6 +184,7 @@ def load(self, context,
                 # Load the actual image files
                 # Color maps get deferred to after the other textures
                 deferred_textures = []
+                cycles_textures = []
                 for image_type, image_name in material.images.items():
                     if image_name not in material_images:
                         search_dir = os.path.dirname(filepath)
@@ -205,6 +207,17 @@ def load(self, context,
                     else:
                         image = None
 
+                    # Add textures to cycles_textures to
+                    #  create a cycles material later on
+                    if image_type == "color":
+                        cycles_textures.append([image_name, "TS_COLOR_MAP"])
+
+                    elif image_type == "normal":
+                        cycles_textures.append([image_name, "TS_NORMAL_MAP"])
+
+                    elif image_type == "specular":
+                        cycles_textures.append([image_name, "TS_SPECULAR_MAP"])
+
                     # Create the texture - We exclude the extension in the
                     #  texture name
                     texture_name = os.path.splitext(image_name)[0]
@@ -224,6 +237,9 @@ def load(self, context,
                         slot.use_map_alpha = False
                         if image_type == 'normal':
                             slot.normal_factor = True
+
+                # Create the Cycles-Material
+                cycles_materials.createCyclesMaterial(mat, cycles_textures)
 
                 # Add the deferred_textures
                 for tex in deferred_textures:
