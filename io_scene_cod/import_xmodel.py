@@ -187,7 +187,7 @@ def load(self, context,
                 cycles_textures = []
                 for image_type, image_name in material.images.items():
                     if image_name not in material_images:
-                        search_dir = os.path.dirname(filepath)
+                        search_dir = os.path.split(os.path.dirname(filepath))[0]
                         image = load_image(image_name,
                                            dirname=search_dir,
                                            recursive=use_image_search,
