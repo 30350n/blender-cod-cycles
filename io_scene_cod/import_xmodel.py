@@ -210,13 +210,13 @@ def load(self, context,
                     # Add textures to cycles_textures to
                     #  create a cycles material later on
                     if image_type == "color":
-                        cycles_textures.append([image_name, "TS_COLOR_MAP"])
+                        cycles_textures.append([os.path.split(image_name)[0], "TS_COLOR_MAP"])
 
                     elif image_type == "normal":
-                        cycles_textures.append([image_name, "TS_NORMAL_MAP"])
+                        cycles_textures.append([os.path.split(image_name)[0], "TS_NORMAL_MAP"])
 
                     elif image_type == "specular":
-                        cycles_textures.append([image_name, "TS_SPECULAR_MAP"])
+                        cycles_textures.append([os.path.split(image_name)[0], "TS_SPECULAR_MAP"])
 
                     # Create the texture - We exclude the extension in the
                     #  texture name
