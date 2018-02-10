@@ -110,9 +110,9 @@ def createCyclesMaterial(material, textures):
     node_invert = nodes.new(type="ShaderNodeInvert")
     node_invert.location = -400, -400
 
-    node_normal = nodes.new(type="ShaderNodeNormalMap")
-    node_normal.location = -200, 0
-    node_normal.inputs[0].default_value = 0.5
+    node_bump = nodes.new(type="ShaderNodeBump")
+    node_bump.location = -200, 0
+    node_bump.inputs[0].default_value = 0.5
 
     node_mult_1 = nodes.new(type="ShaderNodeMath")
     node_mult_1.location = -200, -200
@@ -131,9 +131,9 @@ def createCyclesMaterial(material, textures):
     links.new(node_textures.outputs[1], node_mult_1.inputs[0])
     links.new(node_textures.outputs[1], node_invert.inputs[1])
     links.new(node_invert.outputs[0], node_mult_2.inputs[0])
-    links.new(node_textures.outputs[2], node_normal.inputs[1])
+    links.new(node_textures.outputs[2], node_bump.inputs[2])
     
-    links.new(node_normal.outputs[0], node_shader.inputs["Normal"])
+    links.new(node_bump.outputs[0], node_shader.inputs["Normal"])
     links.new(node_mult_1.outputs[0], node_shader.inputs["Specular"])
     links.new(node_mult_2.outputs[0], node_shader.inputs["Roughness"])
 
