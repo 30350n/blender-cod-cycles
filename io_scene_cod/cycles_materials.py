@@ -34,6 +34,7 @@ import bpy
     }"""
 
 def createCyclesMaterial(material, textures):
+    print(textures)
     group = bpy.data.node_groups.new(name=material.name, type="ShaderNodeTree")
 
     group_nodes = group.nodes

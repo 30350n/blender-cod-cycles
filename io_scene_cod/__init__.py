@@ -20,6 +20,7 @@
 Blender-CoD: Blender Add-On for Call of Duty Modding
 Copyright (c) 2017 CoDEmanX, Flybynyt, SE2Dev -- blender-cod@online.de
 https://github.com/CoDEmanX/blender-cod
+https://github.com/30350n/blender-cod-cycles
 """
 
 import bpy
@@ -32,16 +33,15 @@ import time
 import os
 
 bl_info = {
-    "name": "Blender-CoD",
-    "author": "CoDEmanX, Flybynyt, SE2Dev",
-    "version": (0, 5, 0),
+    "name": "Blender-CoD-Cycles",
+    "author": "CoDEmanX, Flybynyt, SE2Dev, Bobbe",
+    "version": (0, 5, 1),
     "blender": (2, 78, 0),
     "location": "File > Import  |  File > Export",
     "description": "Import-Export XModel_Export, XAnim_Export",
     "warning": "Alpha version, please report any bugs!",
     "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Import-Export/Call_of_Duty_IO",  # nopep8
     "tracker_url": "http://projects.blender.org/tracker/index.php?func=detail&aid=30482",  # nopep8
-    "support": "TESTING",
     "category": "Import-Export"
 }
 
