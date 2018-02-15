@@ -141,15 +141,14 @@ if "bpy" in locals():
         imp.reload(shared)
     if "PyCoD" in locals():
         imp.reload(PyCoD)
-    if "update" in locals():
-        imp.reload(update)
+
+    from io_scene_cod.update import *
 
 else:
     from . import import_xmodel, export_xmodel, import_xanim, export_xanim
     from . import shared
     from . import PyCoD
-    from . import update
-
+    from io_scene_cod.update import *
 
 class ImportXModel(bpy.types.Operator, ImportHelper):
     bl_idname = "import_scene.xmodel"
