@@ -35,7 +35,7 @@ import os
 bl_info = {
     "name": "Blender-CoD-Cycles",
     "author": "CoDEmanX, Flybynyt, SE2Dev, Bobbe",
-    "version": (0, 5, 1),
+    "version": (0, 5, 2),
     "blender": (2, 78, 0),
     "location": "File > Import  |  File > Export",
     "description": "Import-Export XModel_Export, XAnim_Export",
@@ -141,11 +141,14 @@ if "bpy" in locals():
         imp.reload(shared)
     if "PyCoD" in locals():
         imp.reload(PyCoD)
+    if "update" in locals():
+        imp.reload(update)
 
 else:
     from . import import_xmodel, export_xmodel, import_xanim, export_xanim
     from . import shared
     from . import PyCoD
+    from . import update
 
 
 class ImportXModel(bpy.types.Operator, ImportHelper):
